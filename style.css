@@ -52,6 +52,11 @@ section {
   cursor: pointer;
 }
 
+.select-player {
+  width: 250px;
+  height: 40px;
+}
+
 .match {
   position: absolute;
   top: 50%;

@@ -8,10 +8,13 @@ const game = () => {
     const playBtn = document.querySelector(".intro button");
     const introScreen = document.querySelector(".intro");
     const match = document.querySelector(".match");
+    const player = document.querySelector(".player");
+    const selectPlayer = document.querySelector(".select-player");
 
     playBtn.addEventListener("click", () => {
       introScreen.classList.add("fadeOut");
       match.classList.add("fadeIn");
+      player.textContent = selectPlayer.value;
     });
   };
   //Play Match
@@ -57,34 +60,32 @@ const game = () => {
 
     //le premier arrivé à 3 gagne
     if (pScore === 3 && cScore < pScore ) 
-      {        
-        alert ("Victoire du joueur!"),
+      {
+        alert (`Bravo, tu as réussi mon challenge !`),
         location.reload(true)         
         }else if(cScore === 3 && cScore > pScore )      
       {
-        
-          alert ("victoire de l'ordi!"),
+          alert ("Pas de chance, tu peux recommencer mais attention car Arnold est vraiment puissant !"),
           location.reload(true)
       }
   };
-
   const compareHands = (playerChoice, computerChoice) => {
     //Update Text
     const winner = document.querySelector(".winner");
     //Checking for a tie
     if (playerChoice === computerChoice) {
-      winner.textContent = "Egalite";
+      winner.textContent = "Egalité";
       return;
     }
     //Check for Rock
     if (playerChoice === "pierre") {
       if (computerChoice === "ciseaux") {
-        winner.textContent = "Joueur gagne";
+        winner.textContent = "Tu bats Arnold";
         pScore++;
         updateScore();
         return;
       } else {
-        winner.textContent = "Ordi gagne";
+        winner.textContent = "Arnold gagne";
         cScore++;
         updateScore();
         return;
@@ -93,12 +94,12 @@ const game = () => {
     //Check for Paper
     if (playerChoice === "papier") {
       if (computerChoice === "ciseaux") {
-        winner.textContent = "Ordi gagne";
+        winner.textContent = "Arnold gagne";
         cScore++;
         updateScore();
         return;
       } else {
-        winner.textContent = "Joueur gagne";
+        winner.textContent = "Tu bats Arnold";
         pScore++;
         updateScore();
         return;
@@ -107,12 +108,12 @@ const game = () => {
     //Check for Scissors
     if (playerChoice === "ciseaux") {
       if (computerChoice === "pierre") {
-        winner.textContent = "Ordi gagne";
+        winner.textContent = "Arnold gagne";
         cScore++;
         updateScore();
         return;
       } else {
-        winner.textContent = "Joueur gagne";
+        winner.textContent = "Tu bats Arnold";
         pScore++;
         updateScore();
         return;
